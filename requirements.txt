@@ -1,0 +1,42 @@
+# E-commerce Data Pipeline with Dagster - Requirements
+# Core Dagster packages
+dagster>=1.5.0
+dagster-webserver>=1.5.0
+
+# Data processing and storage
+pandas>=2.0.0
+duckdb>=0.9.0
+numpy>=1.24.0
+
+# Data visualization
+matplotlib>=3.6.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# Development and analysis tools
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# Utility packages
+python-dateutil>=2.8.0
+pytz>=2023.3
+pathlib2>=2.3.7
+
+# Optional: Enhanced logging and monitoring
+structlog>=23.1.0
+
+# Optional: Additional data formats support
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# Optional: Performance optimization
+numba>=0.58.0
+
+# Testing (for development)
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code quality (for development)
+black>=23.7.0
+flake8>=6.0.0
+isort>=5.12.0
