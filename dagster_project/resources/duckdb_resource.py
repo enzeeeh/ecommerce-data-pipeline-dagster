@@ -43,34 +43,37 @@ class DuckDBConnectionWrapper:
         return self.db_file
 
 
+# Singleton connection to ensure only one connection is created
+_singleton_connection = None
+
 @resource(
     description="DuckDB connection resource with schema setup"
 )
 def duckdb_resource(context):
-    """
-    Dagster resource for DuckDB connection and schema management.
-    
-    Creates and manages connection to sales.duckdb with proper table schemas.
-    Resource stays open for the entire run duration to support parallel ops.
-    """
+    global _singleton_connection
+
+    if _singleton_connection is not None:
+        context.log.info("Reusing existing DuckDB connection.")
+        return _singleton_connection
+
     # Database configuration - use absolute path
     from pathlib import Path
     current_dir = Path(__file__).parent.parent
     db_file = current_dir / ".." / "data" / "sales.duckdb"
     db_file = str(db_file.resolve())
-    
+
     tables = {
         'raw_data': 'raw_amazon_sales',
         'monthly_revenue': 'monthly_revenue',
         'daily_orders': 'daily_orders'
     }
-    
+
     # Create connection
     conn = duckdb.connect(db_file)
-    
+
     # Raw data table schema (optimized for Amazon sales data)
     raw_table_ddl = f"""
-    CREATE OR REPLACE TABLE {tables['raw_data']} (
+    CREATE TABLE IF NOT EXISTS {tables['raw_data']} (
         -- Identifiers
         index_id INTEGER,
         order_id VARCHAR,
@@ -111,10 +114,10 @@ def duckdb_resource(context):
         ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """
-    
+
     # Monthly revenue by category analytical table
     monthly_revenue_ddl = f"""
-    CREATE OR REPLACE TABLE {tables['monthly_revenue']} (
+    CREATE TABLE IF NOT EXISTS {tables['monthly_revenue']} (
         year_month VARCHAR,
         category VARCHAR,
         total_revenue DECIMAL(12,2),
@@ -123,10 +126,10 @@ def duckdb_resource(context):
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """
-    
+
     # Daily orders by status analytical table  
     daily_orders_ddl = f"""
-    CREATE OR REPLACE TABLE {tables['daily_orders']} (
+    CREATE TABLE IF NOT EXISTS {tables['daily_orders']} (
         order_date DATE,
         status VARCHAR,
         order_count INTEGER,
@@ -135,19 +138,20 @@ def duckdb_resource(context):
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
     """
-    
+
     # Execute schema creation
     conn.execute(raw_table_ddl)
     conn.execute(monthly_revenue_ddl)
     conn.execute(daily_orders_ddl)
-    
+
     # Create wrapper with configuration
     wrapped_conn = DuckDBConnectionWrapper(conn, tables, db_file)
-    
+
     context.log.info(f"🦆 DuckDB connection established: {db_file}")
     context.log.info(f"📊 Tables configured: {list(tables.values())}")
     context.log.info("🔄 Connection will remain open for parallel analytics ops")
-    
-    # Return the connection wrapper directly
-    # Dagster will handle cleanup when all ops using this resource complete
+
+    # Store the singleton connection
+    _singleton_connection = wrapped_conn
+
     return wrapped_conn

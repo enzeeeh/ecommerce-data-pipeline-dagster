@@ -6,7 +6,7 @@ Run with: dagster dev
 """
 
 from dagster import repository
-from jobs.data_pipeline import amazon_sales_pipeline
+from dagster_project.jobs.data_pipeline import amazon_sales_pipeline
 
 
 @repository

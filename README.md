@@ -69,14 +69,13 @@ pip install -r requirements-dev.txt
 
 ### 2. Run Data Pipeline
 ```bash
-# Navigate to Dagster project
-cd dagster_project
-
-# Start Dagster UI
+# Start Dagster UI from the repository root (no `cd dagster_project` needed)
+# Ensure `dagster` is installed and that `pyproject.toml` points to
+# the Dagster repository module (example: `module_name = "dagster_project.repository"`).
 dagster dev
 
 # Open browser: http://localhost:3000
-# Execute 'amazon_sales_pipeline' job
+# Execute the `amazon_sales_pipeline` job from the Dagster UI
 ```
 
 ### 3. View Analysis Results
@@ -108,11 +107,12 @@ pytest --cov=dagster_project --cov-report=html
 ## 📋 Pipeline Components
 
 ### **Dagster Ops (Data Engineering)**
+
 - `load_csv_data` - Validates and loads raw CSV files
 - `clean_amazon_sales_data` - Applies business rules and data cleaning
 - `insert_raw_data_to_duckdb` - Loads cleaned data into warehouse
-- `create_monthly_revenue_table` - Generates monthly revenue analytics
 - `create_daily_orders_table` - Creates daily order pattern analysis
+- `create_monthly_revenue_table` - Generates monthly revenue analytics
 
 ### **DuckDB Tables (Data Warehouse)**
 - `raw_amazon_sales` - Clean sales transactions (128,975 records)
