@@ -19,7 +19,6 @@ This project demonstrates a production-ready data engineering pipeline that proc
 
 ## 🏗️ Project Architecture
 
-### **Hybrid Structure** (Industry Best Practice)
 ```text
 project/
 ├── dagster_project/          # Data Engineering (Python modules)
@@ -60,7 +59,7 @@ pip install -r requirements.txt
 pip install -r requirements-dev.txt
 ```
 
-### 2. Run Data Pipeline
+### 3. Run Data Pipeline
 ```bash
 # Start Dagster UI from the repository root (no `cd dagster_project` needed)
 # Ensure `dagster` is installed and that `pyproject.toml` points to
@@ -77,7 +76,7 @@ The image below shows the Dagster UI confirming all jobs finished successfully d
 
 ![Dagster jobs finished successfully](visualizations/all the jobs finished executed.JPG)
 
-### 3. View Analysis Results
+### 4. View Analysis Results
 ```bash
 # Start Jupyter notebook
 jupyter notebook notebooks/analysis.ipynb
@@ -89,7 +88,7 @@ jupyter notebook notebooks/analysis.ipynb
 # • Geographic insights
 ```
 
-### 4. Run Tests (Optional)
+### 5. Run Tests (Optional)
 ```bash
 # Run all tests
 pytest
