@@ -1,0 +1,5 @@
+'__pycache__/' | Out-File -FilePath .gitignore -Encoding utf8 -Append
+'*.pyc' | Out-File -FilePath .gitignore -Encoding utf8 -Append
+'*.duckdb' | Out-File -FilePath .gitignore -Encoding utf8 -Append
+'data/*.csv' | Out-File -FilePath .gitignore -Encoding utf8 -Append
+'*.zip' | Out-File -FilePath .gitignore -Encoding utf8 -Append
