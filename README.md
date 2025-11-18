@@ -14,20 +14,10 @@ This project demonstrates a production-ready data engineering pipeline that proc
 ## 📊 Key Business Insights
 
 ### 🏆 Most Profitable Month
-- **April 2022**: $26.2M in revenue (highest performing month)
-- **128,975 total orders** processed across 3-month period
-- **Average order value**: $203 per transaction
 
 ### 📈 Performance Metrics
-- **Top Category**: Set products (consistently highest revenue)
-- **Data Quality**: 99.8% clean records after processing
-- **Geographic Coverage**: 29 states, 400+ cities analyzed
-- **Order Success Rate**: 85%+ orders successfully fulfilled
 
 ## 🏗️ Project Architecture
-
-### **Hybrid Structure** (Industry Best Practice)
-```
 project/
 ├── dagster_project/          # Data Engineering (Python modules)
 │   ├── ops/                  # Dagster operations
@@ -77,6 +67,12 @@ dagster dev
 # Open browser: http://localhost:3000
 # Execute the `amazon_sales_pipeline` job from the Dagster UI
 ```
+
+### Dagster UI — Job Completion
+
+The image below shows the Dagster UI confirming all jobs finished successfully during an execution. This screenshot helps verify that the `amazon_sales_pipeline` completed all steps without errors.
+
+![Dagster jobs finished successfully](visualizations/all the jobs finished executed.JPG)
 
 ### 3. View Analysis Results
 ```bash
@@ -194,8 +190,56 @@ CREATE TABLE daily_orders (
 ### **Operational Improvements**
 - **Data quality score**: 99.8% clean records enable reliable analytics
 - **Automated pipeline**: Reduces manual processing time by 90%
-- **Real-time insights**: Daily/monthly KPIs for business decision-making
-- **Scalable architecture**: Handles growing data volumes efficiently
+ - **Real-time insights**: Daily/monthly KPIs for business decision-making
+ - **Scalable architecture**: Handles growing data volumes efficiently
+
+## 📊 AMAZON SALES BUSINESS INTELLIGENCE DASHBOARD
+
+### 💰 Financial Overview
+| Metric | Value |
+|---|---:|
+| Total Revenue | $215,020,182 |
+| Total Orders | 324,213 |
+| Average Order Value | $663 |
+| Revenue Growth Period | March 2022 - June 2022 |
+
+### 🏆 Key Findings
+| Metric | Details |
+|---|---|
+| Most Profitable Month | 2022-04 ($78,703,560) |
+| Top Product Category | Set ($107,195,019) |
+| Top State | MAHARASHTRA ($36,674,310) |
+| Average Daily Orders | 4,252 |
+
+### 📈 Order Status Breakdown
+| Status | Orders | Percent |
+|---|---:|---:|
+| Cancelled | 54,996 | 17.0% |
+| Pending | 1,974 | 0.6% |
+| Pending - Waiting for Pick Up | 843 | 0.3% |
+| Shipped | 233,412 | 72.0% |
+| Shipped - Damaged | 3 | 0.0% |
+| Shipped - Delivered to Buyer | 86,307 | 26.6% |
+| Shipped - Lost in Transit | 15 | 0.0% |
+| Shipped - Out for Delivery | 105 | 0.0% |
+| Shipped - Picked Up | 2,919 | 0.9% |
+| Shipped - Rejected by Buyer | 33 | 0.0% |
+| Shipped - Returned to Seller | 5,859 | 1.8% |
+| Shipped - Returning to Seller | 435 | 0.1% |
+| Shipping | 24 | 0.0% |
+
+### 🎯 Business Recommendations
+- Focus marketing efforts in 2022-04 (highest conversion period)
+- Expand the *Set* product line (top revenue generator)
+- Prioritize logistics and capacity planning in MAHARASHTRA (highest revenue state)
+- Investigate cancelled orders (54,996 orders) to reduce churn and improve fulfillment
+
+### ✅ Data Quality Metrics
+| Metric | Value |
+|---|---:|
+| Data Coverage (unique days) | 91 |
+| Total Records Analyzed | 324,213 |
+| Geographic Coverage (states, cities) | 67 states, 8,526 cities |
 
 ## 🛠️ Technology Stack
 
@@ -208,16 +252,6 @@ CREATE TABLE daily_orders (
 | **Development** | Jupyter, Python | Analysis and development environment |
 | **Version Control** | Git | Code versioning and collaboration |
 
-## 📚 Learning Outcomes
-
-This project demonstrates expertise in:
-
-- **Data Engineering**: ETL pipeline design, data validation, schema management
-- **Data Architecture**: Warehouse design, performance optimization, scalability
-- **Business Intelligence**: KPI development, trend analysis, actionable insights
-- **Software Engineering**: Modular code, testing, documentation, best practices
-- **Data Visualization**: Interactive dashboards, storytelling with data
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -226,14 +260,10 @@ This project demonstrates expertise in:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 📞 Contact
 
-**Your Name** - enzi.muzakkil@gmail.com  
-**Project Link**: https://github.com/your-username/ecommerce-data-pipeline-dagster
+**Muhammad Enzi Muzakki** - enzi.muzakkil@gmail.com  
+**Project Link**: https://github.com/enzeeeh/ecommerce-data-pipeline-dagster
 
 ---
 
