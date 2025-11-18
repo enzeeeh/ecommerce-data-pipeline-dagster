@@ -18,10 +18,13 @@ This project demonstrates a production-ready data engineering pipeline that proc
 ### 📈 Performance Metrics
 
 ## 🏗️ Project Architecture
+
+### **Hybrid Structure** (Industry Best Practice)
+```text
 project/
 ├── dagster_project/          # Data Engineering (Python modules)
 │   ├── ops/                  # Dagster operations
-│   ├── jobs/                 # Pipeline orchestration  
+│   ├── jobs/                 # Pipeline orchestration
 │   ├── resources/            # Database connections
 │   └── repository.py         # Main entry point
 ├── data/                     # Data storage
