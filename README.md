@@ -11,12 +11,6 @@ This project demonstrates a production-ready data engineering pipeline that proc
 3. **Analytics**: Generate business intelligence tables and KPIs
 4. **Insights**: Create visualizations and identify business opportunities
 
-## 📊 Key Business Insights
-
-### 🏆 Most Profitable Month
-
-### 📈 Performance Metrics
-
 ## 🏗️ Project Architecture
 
 ```text
